@@ -77,5 +77,3 @@ while True:
     print("你的正确率是-->：",comparison(list1,list2))
     if comparison(list1,list2) == "猜对了！":
         break
-
-
