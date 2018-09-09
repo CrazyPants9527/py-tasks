@@ -1,6 +1,8 @@
 import requests
+import argparse
 
 
+#显示当天天气预报
 def showmsg(weather_data):
     #显示时间
     date = weather_data['result']['realtime']
@@ -31,12 +33,33 @@ def showmsg(weather_data):
         print(f[k], ':', v)
 
 
-appkey = '2bcac5f5ad4e497eade7e600898e13f3'
-city = input('请输入查询的地名：')
-value = {'key': appkey, 'cityname': city}
-url = 'http://api.avatardata.cn/Weather/Query'
-s = requests.get(url, params=value)
-weather_data = s.weather_dataon()
-weather = weather_data['result']['weather']
-weinfo = weather[0]['info']
-showmsg(weather_data)
+#预报未来四天天气状况
+def future_weather(weather_data):
+    weather = weather_data['result']['weather']
+    for i in range(1, len(weather)):
+        print(weather[i]['date'])  #未来的时间
+        weinfo = weather[i]['info']
+        for k, v in weinfo.items():
+            print(k, ':', v)
+
+
+#接收一个城市名，返回api对该城市的所有天气预报信息
+def weather_info(city):
+    appkey = '2bcac5f5ad4e497eade7e600898e13f3'
+    url = 'http://api.avatardata.cn/Weather/Query'
+    p = {'key': appkey, 'cityname': city}
+    s = requests.get(url, params=p)
+    weather_data = s.json()
+    return weather_data
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("city", type=str, help="输入一个城市名")
+    parser.add_argument("-f", "--future", help="输入-f,显示该城市未来四天天气预报")
+    args = parser.parse_args()
+    weather_data = weather_info(args.city)
+    if args.future:
+        future_weather(weather_data)
+    else:
+        showmsg(weather_data)
