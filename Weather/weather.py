@@ -63,7 +63,7 @@ def weather_info(city,
     p = {'key': appkey, 'cityname': city}
     s = requests.get(url, params=p)
     weather_data = s.json()
-    err = weather_data.get('error_code')
+    err = weather_data.get('error_code') #获取异常代码
     error(err)
     return weather_data
 
