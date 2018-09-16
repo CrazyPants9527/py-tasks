@@ -1,37 +1,28 @@
+
 section{
-	background: url(../img/bg.jpg);
-	background-position: center 0;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	-webkit-background-size: cover;
-	-o-background-size: cover;
-	-moz-background-size: cover;
-	-ms-background-size: cover;
-	height: 100%;
-}
-.input-group{
-	margin:15em auto 30em;
-}
-article header h1{
+	width: 700px;
+	margin: 200px auto;
 	text-align: center;
-    color:#fff;
-    font-size: 2.8em;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin: 2em auto 2em auto;
 }
-footer{
-	text-align: center;
-	background: grey;
-	height: 6em;
-	width: 100%;
-	margin-top: 0;
+article{
+	width: 700px;
+}
+#te{
+	height: 30px;
+	width: 400px;
+	display: block;
+	float: left;
+	margin: 10px 0 auto 110px;
 	
 }
-
-footer h2 {
-	font-size: 1.3em;
+#bun{
+	background-color:#2d78f4;
+	height: 36px;
+	width: 100px;
 	color: #fff;
-	padding-top: 2em;
+	font-size: 20px;
+	display: block;
+	float: left;
+	margin:10px 0;
+	border-radius: 5px;
 }
